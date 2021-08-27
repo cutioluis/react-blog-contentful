@@ -3,7 +3,7 @@ import "./App.css";
 import { fetcher } from "./utils";
 import useSWR from "swr";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 function App() {
   const { data, error } = useSWR(
@@ -18,9 +18,11 @@ function App() {
   return (
     <div>
       <h1>hay {data.total} blogs !</h1>
+      {/* React.Children.ToArray asigna una key automatica */}
       {React.Children.toArray(
         data.items.map((item) => <a href="">{item.fields.title}</a>)
       )}
+      <ReactMarkdown># Hello, *world*!</ReactMarkdown>
     </div>
   );
 }
