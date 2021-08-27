@@ -1,6 +1,9 @@
+import * as React from "react";
 import "./App.css";
 import { fetcher } from "./utils";
 import useSWR from "swr";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const { data, error } = useSWR(
@@ -12,7 +15,14 @@ function App() {
   if (!data) return <div>loading...</div>;
 
   // render data
-  return <div>hay {data.total} blogs !</div>;
+  return (
+    <div>
+      <h1>hay {data.total} blogs !</h1>
+      {React.Children.toArray(
+        data.items.map((item) => <a href="">{item.fields.title}</a>)
+      )}
+    </div>
+  );
 }
 
 export default App;
