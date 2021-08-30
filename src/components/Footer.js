@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../commons/constants/colors";
+import SIZES from "../commons/constants/sizes";
 
 const FooterText = styled.footer`
+  margin: ${SIZES.containerPadding};
   text-align: center;
   color: ${COLORS.white};
 `;
