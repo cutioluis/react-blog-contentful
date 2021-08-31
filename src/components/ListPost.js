@@ -4,19 +4,25 @@ import moment from "moment";
 
 import { COLORS } from "../commons/constants/colors";
 import SIZES from "../commons/constants/sizes";
+import { Link } from "react-router-dom";
 
 const SectionPost = styled.section`
   margin: ${SIZES.containerPadding};
 `;
 
-const PostContainer = styled.article`
+const PostContainer = styled(Link)`
   display: flex;
   border-radius: 10px;
   flex-direction: column;
   padding: 30px;
   margin: 50px auto;
   max-width: 800px;
+  transition: transform 150ms;
   background-color: ${COLORS.black4};
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 `;
 
 const PostTitle = styled.h3`
@@ -33,12 +39,12 @@ const ListPost = ({ data }) => {
     <SectionPost>
       {React.Children.toArray(
         data.items.map((item) => (
-          <PostContainer>
-            <PostTitle>{item.fields.title}</PostTitle>
-            <PostDescription>
-              {moment(item.fields.creationDate).format("ll")}
-            </PostDescription>
-          </PostContainer>
+            <PostContainer to={`/blog/${item.sys.id}`}>
+              <PostTitle>{item.fields.title}</PostTitle>
+              <PostDescription>
+                {moment(item.fields.creationDate).format("ll")}
+              </PostDescription>
+            </PostContainer>
         ))
       )}
     </SectionPost>

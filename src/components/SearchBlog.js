@@ -10,8 +10,8 @@ const Container = styled.div`
 `;
 const SearchInput = styled.input`
   color: ${COLORS.gray2};
+  width: 40%;
   padding: 20px;
-  min-width: 500px;
   height: 50px;
   border: none;
   background-color: ${COLORS.black3};
